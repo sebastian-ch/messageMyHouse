@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Message API Response</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Extract the text parameter from URL
+            const params = new URLSearchParams(window.location.search);
+            const textParam = params.get('text');
+
+            // Create the JSON response
+            const response = {
+                text: textParam || localStorage.getItem('stored-text') || ''
+            };
+
+            // Display as JSON
+            document.getElementById('json').textContent = JSON.stringify(response, null, 2);
+        });
+    </script>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        pre {
+            background-color: white;
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            overflow: auto;
+            font-family: monospace;
+        }
+    </style>
+</head>
+
+<body>
+    <pre id="json">Loading...</pre>
+</body>
+
+</html>
